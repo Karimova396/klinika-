@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCar+</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="light">
+
+    <nav style="background-color: brown; width: 100%;">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between py-2 flex-wrap gap-2">
+                <h2 id="mediCar" class="navbar-brand d-flex align-items-center gap-2" style="text-transform: bold; color: #fff; margin-right: 10px;">
+                    <img src="./Безымянный.png" alt="MediCar+ logo" style="height: 60px; width: 80px;">
+                    MediCar+
+                </h2>
+                <a class="navbar-brand" style="color: #fff;">Xizmatlar</a>
+                <a class="navbar-brand" style="color: #fff;">Shifokorlar</a>
+                <a class="navbar-brand" style="color: #fff;">Narxlar</a>
+                <a class="navbar-brand" style="color: #fff;">Biz haqimizda</a>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="xizmat yoki shifokorni izlash" />
+                    <button type="button" class="btn btn-outline-light">qidirish</button>
+                </form>
+
+                <div class="d-flex align-items-center gap-2" id="authZone">
+                    <button class="auth-btn" onclick="openModal('loginModal')">Kirish</button>
+                    <button class="auth-btn filled" onclick="openModal('registerModal')">Ro'yxatdan o'tish</button>
+                </div>
+
+                <button id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="d-flex justify-content-center mt-4">
+        <div class="card" style="width: 800px; background-color: brown; color: #fff;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="./Безымянный.png"
+                        class="rounded-start"
+                        alt="..."
+                        style="width: 100%; height: 100%; object-fit: cover; min-height: 250px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body p-4">
+                        <h3 class="card-title" style="color: #fff;">MediCar+</h3>
+                        <p class="card-text" style="color: #f5e6e6;">MediCar+ tashxis qo'yish va davolashga zamonaviy yondashuvni har bir bemor uchun
+                            shaxsiylashtirilgan yordam bilan birlashtiradi. Bizning shifokorlarimiz va mutaxassislarimiz sizga profilaktika yordamidan
+                            tortib murakkab kasalliklarni davolashgacha bo'lgan barcha tibbiy xizmatlarni taklif qilishga tayyor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <h1 style="color: brown; margin-top: 30px; text-align: center;">
+        |BIZNING HIZMATLARIMIZ|
+    </h1>
+    <div class="container mt-4">
+        <div class="row" id="xizmatlarSection"></div>
+    </div>
+
+
+    <h1 style="color: brown; margin-top: 40px; text-align: center;">
+        |NEGA BIZNI KLINIKANI TANLASH ZARUR|
+    </h1>
+    <div style="justify-content: center;" class="container mt-5">
+        <div style="color: brown;" class="row justify-content-center" id="SabablarSection"></div>
+    </div>
+
+  
+    <h1 style="color: brown; margin-top: 50px; text-align: center;">
+        |BIZNING SHIFOKORLARIMIZ|
+    </h1>
+    <div style="justify-content: center;" class="container mt-5">
+        <div style="color: brown;" class="row justify-content-center" id="ShifokorlarSection"></div>
+    </div>
+
+
+    <button class="uchrashuv-btn" onclick="openModal('uchrashuvModal')">
+        🏥 Klinikada uchrashuvga yoziling
+    </button>
+    <div style="height: 60px;"></div>
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: 2px solid brown;">
+                    <h5 class="modal-title" style="color: brown; font-weight: bold;">🔐 Tizimga kirish</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Login (Ism Familya)</label>
+                        <input type="text" class="form-control" id="loginName" placeholder="Masalan: Kumush Karimova">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Parol</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Parolingizni kiriting">
+                    </div>
+                    <div id="loginError" style="color: red; display: none; font-size: 14px;">❌ Login yoki parol noto'g'ri!</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+                    <button type="button" class="btn" style="background-color: brown; color: #fff;" onclick="handleLogin()">Kirish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: 2px solid brown;">
+                    <h5 class="modal-title" style="color: brown; font-weight: bold;">📝 Ro'yxatdan o'tish</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Ism Familya Otchestvo</label>
+                        <input type="text" class="form-control" id="regName" placeholder="To'liq ismingizni kiriting">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Telefon raqam</label>
+                        <input type="tel" class="form-control" id="regPhone" placeholder="+998 XX XXX XX XX">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Yangi parol</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="Yangi parol o'rnating">
+                    </div>
+                    <div id="regError" style="color: red; display: none; font-size: 14px;"></div>
+                    <div id="regSuccess" style="color: green; display: none; font-size: 14px;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+                    <button type="button" class="btn" style="background-color: brown; color: #fff;" onclick="handleRegister()">Ro'yxatdan o'tish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="uchrashuvModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: 2px solid brown;">
+                    <h5 class="modal-title" style="color: brown; font-weight: bold;">🏥 Uchrashuvga yozilish</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Ism Familya Otchestvo</label>
+                        <input type="text" class="form-control" id="uchName" placeholder="To'liq ismingizni kiriting">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Telefon raqam</label>
+                        <input type="tel" class="form-control" id="uchPhone" placeholder="+998 XX XXX XX XX">
+                    </div>
+                    <div id="uchError" style="color: red; display: none; font-size: 14px;"></div>
+                    <div id="uchSuccess" style="color: green; display: none; font-size: 14px;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+                    <button type="button" class="btn" style="background-color: brown; color: #fff;" onclick="handleUchrashuv()">Yozilish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+   
+    <div class="modal fade" id="xizmatDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="border-radius: 16px; overflow: hidden; border: none;">
+                <div class="modal-header" style="background: brown; border: none; padding: 20px 24px;">
+                    <h5 class="modal-title" id="xizmatModalTitle" style="color: #fff; font-weight: bold; font-size: 22px;"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="row g-0">
+                        <div class="col-md-5" style="background: #f9f0f0; display: flex; align-items: center; justify-content: center; min-height: 280px; padding: 20px;">
+                            <img id="xizmatModalImg" src="" alt=""
+                                style="width: 100%; max-height: 260px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 20px rgba(139,30,30,0.2);">
+                        </div>
+                        <div class="col-md-7" style="padding: 32px 28px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+                                <span style="background: #f9f0f0; color: brown; border-radius: 20px; padding: 4px 14px; font-size: 13px; font-weight: 600;">🏥 Xizmat</span>
+                            </div>
+                            <p id="xizmatModalDesc" style="color: #444; font-size: 16px; line-height: 1.7; margin-bottom: 24px;"></p>
+                            <div style="background: #f9f0f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                                <div>
+                                    <div style="font-size: 13px; color: #888; margin-bottom: 4px;">Xizmat narxi</div>
+                                    <div id="xizmatModalNarx" style="font-size: 24px; font-weight: bold; color: brown;"></div>
+                                </div>
+                                <button onclick="bootstrap.Modal.getInstance(document.getElementById('xizmatDetailModal')).hide(); openModal('uchrashuvModal');"
+                                    style="background: brown; color: #fff; border: none; border-radius: 30px; padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 14px rgba(139,30,30,0.3);"
+                                    onmouseover="this.style.background='#7a1515'"
+                                    onmouseout="this.style.background='brown'">
+                                    📅 Yozilish
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <footer style="background-color: brown; color: #fff; padding: 40px 0 20px;">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 mb-4">
+                    <h4 style="color: #fff; margin-bottom: 15px;">
+                        <img src="./Безымянный.png" alt="MediCar+ logo" style="height: 50px; width: 70px; vertical-align: middle; margin-right: 10px;">
+                        MediCar+
+                    </h4>
+                    <p style="color: #f5e6e6; font-size: 14px; line-height: 1.6;">
+                        Sog'liqni saqlash sohasida zamonaviy yondashuv va professional xizmat. Bizning klinikada sizga har doim yordam berishga tayyormiz.
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 style="color: #fff; margin-bottom: 15px;">Tezkor havolalar</h5>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;"><a href="#" style="color: #f5e6e6; text-decoration: none;">Xizmatlar</a></li>
+                        <li style="margin-bottom: 8px;"><a href="#" style="color: #f5e6e6; text-decoration: none;">Shifokorlar</a></li>
+                        <li style="margin-bottom: 8px;"><a href="#" style="color: #f5e6e6; text-decoration: none;">Narxlar</a></li>
+                        <li style="margin-bottom: 8px;"><a href="#" style="color: #f5e6e6; text-decoration: none;">Biz haqimizda</a></li>
+                        <li><a href="#" style="color: #f5e6e6; text-decoration: none;">Aloqa</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 style="color: #fff; margin-bottom: 15px;">Aloqa</h5>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;">📍 Toshkent shahar, Yunusobod tumani</li>
+                        <li style="margin-bottom: 8px;">📞 +998 71 200 00 00</li>
+                        <li style="margin-bottom: 8px;">✉️ info@medicar.uz</li>
+                        <li>⏰ Dushanba - Shanba: 08:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.3);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p style="color: #f5e6e6; font-size: 14px; margin: 0;">
+                        © 2026 MediCar+. Barcha huquqlar himoyalangan.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" style="color: #f5e6e6; text-decoration: none; margin-right: 15px;">Maxfiylik siyosati</a>
+                    <a href="#" style="color: #f5e6e6; text-decoration: none;">Foydalanish shartlari</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="db.js"></script>
+    <script src="js.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light {
+    background-color: whitesmoke;
+    color: #222;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark nav {
+    background-color: #5a0000 !important;
+}
+
+body.dark .card {
+    background-color: #1e1e1e !important;
+    color: #f0f0f0 !important;
+    border-color: #444 !important;
+}
+
+body.dark .card-text,
+body.dark .card-title {
+    color: #f0f0f0 !important;
+}
+
+body.dark .text-body-secondary {
+    color: #aaa !important;
+}
+
+body.dark h1 {
+    color: #e57373 !important;
+}
+
+body.dark .modal-content {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark .modal-header {
+    border-bottom-color: #444;
+}
+
+body.dark .modal-footer {
+    border-top-color: #444;
+}
+
+body.dark .form-control {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+body.dark .form-control::placeholder {
+    color: #888;
+}
+
+body.dark .form-label {
+    color: #ddd;
+}
+
+body.dark .btn-close {
+    filter: invert(1);
+}
+
+body.dark .dynamic-card {
+    background: #1e1e1e !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+}
+
+body.dark .dynamic-card p {
+    color: #ccc !important;
+}
+
+body.dark .dynamic-card h5 {
+    color: #e57373 !important;
+}
+
+#themeToggle {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 4px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+#themeToggle:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+#userBadge {
+    background-color: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.auth-btn {
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+    border-radius: 20px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.auth-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.auth-btn.filled {
+    background-color: #fff;
+    color: brown;
+    font-weight: bold;
+}
+
+.auth-btn.filled:hover {
+    background-color: #f5e6e6;
+}
+
+.uchrashuv-btn {
+    display: block;
+    margin: 50px auto 20px auto;
+    background-color: brown;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 16px 48px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(139,30,30,0.3);
+    transition: all 0.3s;
+}
+
+.uchrashuv-btn:hover {
+    background-color: #7a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(139,30,30,0.4);
+}
+
+body.dark .uchrashuv-btn {
+    background-color: #a00000;
+}
+
+@media (max-width: 576px) {
+    .uchrashuv-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .uchrashuv-btn {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .uchrashuv-btn {
+        font-size: 17px;
+        padding: 14px 28px;
+    }
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .uchrashuv-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+footer {
+    margin-top: 60px;
+}
+
+footer a:hover {
+    color: #fff !important;
+    text-decoration: underline;
+}
+
+body.dark footer {
+    background-color: #5a0000 !important;
+}
+
+body.dark footer a {
+    color: #e57373 !important;
+}
+
+body.dark footer a:hover {
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 0 15px;
+    }
+    
+    footer h4, footer h5 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    footer p, footer li {
+        font-size: 13px;
+    }
+}
